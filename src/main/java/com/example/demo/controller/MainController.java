@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.config.Beans;
+
 @Controller
 public class MainController {
 	private static final Logger logger= LoggerFactory.getLogger(MainController.class);
 
 //	@Value("#{movieDir}")
-	private String movieDir= "D:\\dn\\[tvN] 미생.E01~20.HDTV.H264.720p-WITH";
+//	private String movieDir= "D:\\dn\\[tvN] 미생.E01~20.HDTV.H264.720p-WITH";
 	
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -49,7 +51,7 @@ public class MainController {
 		Map<String, Object> result= new HashMap<String, Object>();
 		result.put("result", "succ");
 		
-		File file= new File(movieDir);
+		File file= new File(Beans.movieDir);
 		File [] fileArr= file.listFiles();
 		
 		if((fileArr == null) || (fileArr.length==0)) {

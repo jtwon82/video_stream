@@ -26,7 +26,7 @@ $(document).ready(function(){
 			var html= '';
 			$(".list").append("<table>");
 			$(req.list).each(function(id){
-				$(".list").append('<tr><td ><a href="#" onclick="change(\''+encodeURIComponent(this)+'\')">'+this+'</a></td></tr>');
+				$(".list").append('<tr><td ><a href="#'+this+'" onclick="change(\''+encodeURIComponent(this)+'\')">'+this+'</a></td></tr>');
 			});
 			$(".list").append("</table>");
 		}
@@ -35,7 +35,7 @@ $(document).ready(function(){
 function change(src){
 	console.log( src );
 	var html='';
-	html+='<video width="640" height="344" controls autoplay="autoplay">';
+	html+='<video width="100%" height="600" controls autoplay="autoplay">';
 	html+='	<source src="/movie/fileName?fileName='+src+'" type="video/mp4"/>';
 	html+='</video>	';
 	$(".video").empty().append(html);

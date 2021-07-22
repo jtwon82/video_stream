@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.AbstractView;
 
+import com.example.demo.config.Beans;
+
 @Component("streamView")
 public class StreamView extends AbstractView {
 	private static final Logger logger = LoggerFactory.getLogger(StreamView.class);
@@ -21,7 +23,7 @@ public class StreamView extends AbstractView {
 	// 동영상 파일이 저장된 디렉토리 경로
 	// properties 로 따로 지정한 경우인데, 그냥 리터럴로 초기값을 넣어서 사용해도 된다.
 //	@Value("#{movieDir}")
-	private String movieDir= "D:\\dn\\[tvN] 미생.E01~20.HDTV.H264.720p-WITH";
+//	private String movieDir= "D:\\dn\\[tvN] 미생.E01~20.HDTV.H264.720p-WITH";
 
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> map, HttpServletRequest request,
@@ -33,7 +35,7 @@ public class StreamView extends AbstractView {
 		// progressbar 에서 특정 위치를 클릭하거나 해서 임의 위치의 내용을 요청할 수 있으므로
 		// 파일의 임의의 위치에서 읽어오기 위해 RandomAccessFile 클래스를 사용한다.
 		// 해당 파일이 없을 경우 예외 발생
-		RandomAccessFile randomFile = new RandomAccessFile(new File(movieDir, movieName), "r");
+		RandomAccessFile randomFile = new RandomAccessFile(new File(Beans.movieDir, movieName), "r");
 
 		long rangeStart = 0; // 요청 범위의 시작 위치
 		long rangeEnd = 0; // 요청 범위의 끝 위치
